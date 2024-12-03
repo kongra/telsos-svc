@@ -37,13 +37,13 @@ ps:
 docker-clean:
 	@echo "Removing all containers and volumes..."
 	@$(DC) down -v
-	@sudo rm -rf ${HOME}/.docker-volumes/telsos-svc
+	@sudo rm -rf ${HOME}/.docker-volumes/sansi-svc
 
 psql-main:
-	@docker exec -it telsos-svc-main-postgres psql -U postgres -d telsos
+	@docker exec -it sansi-svc-main-postgres psql -U postgres -d sansi
 
 psql-test:
-	@docker exec -it telsos-svc-test-postgres psql -U postgres -d telsos
+	@docker exec -it sansi-svc-test-postgres psql -U postgres -d sansi
 
 # CLOJURE
 clean:
@@ -67,4 +67,4 @@ uberjar:
 run:
 	@java -Xmx2G -XX:+UseStringDeduplication \
 		-Dclojure.compiler.direct-linking=true \
-		-jar $(shell find target -name 'telsos-svc-*-STANDALONE.jar')
+		-jar $(shell find target -name 'sansi-svc-*-STANDALONE.jar')
